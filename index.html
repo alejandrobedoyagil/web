@@ -68,12 +68,17 @@
         <div id="footer"></div>
         <script src="assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                loadContentAsync("svg.html", "svg");
-                loadContentAsync("menu.html", "menu");
-                loadContentAsync("slider.html", "content");
-                loadContentAsync("footer.html", "footer");
-            });
+			document.addEventListener("DOMContentLoaded", function () {
+				loadContentAsync("svg.html", "svg");
+				loadContentAsync("menu.html", "menu");
+				loadContentAsync("footer.html", "footer");
+				if (localStorage.getItem("s")) {
+					loadContentAsync2("details.html", "content");
+				}
+				else {
+					loadContentAsync("slider.html", "content");
+				}
+			});
         </script>
     </body>
 </html>
