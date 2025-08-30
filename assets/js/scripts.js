@@ -18,10 +18,7 @@ async function loadContentAsync(fileName, targetTag) {
 
 async function loadDetailAsync(fileName, targetTag, serviceId) {
   try {
-    //const file = await fetch(fileName);
-    //const fileContent = await file.text();
-    //document.getElementById(targetTag).innerHTML = fileContent;
-	await this.loadContentAsync(fileName, targetTag);
+    await this.loadContentAsync(fileName, targetTag);
     const servicesString = localStorage.getItem(KEY_SERVICES);
     const servicesJSON = JSON.parse(servicesString);
     const service = servicesJSON.find((service) => service.id === serviceId);
@@ -36,12 +33,12 @@ async function loadDetailAsync(fileName, targetTag, serviceId) {
       document.getElementById("promotion").innerHTML = service.promotion;
       document.getElementById("quantity").innerHTML = service.availability.quantity;
       document.getElementById("unit").innerHTML = "/" + service.price.unit;
-      localStorage.removeItem("s");
     }
     else {
       document.getElementById("detail").innerHTML = null;
       document.getElementById("name").innerHTML = "Lo sentimos, el servicio seleccionado no se encuentra disponible en este momento.";
     }
+    localStorage.removeItem("s");
   } catch (error) {}
 }
 
@@ -58,10 +55,12 @@ async function loadServicesAsync() {
 async function populateServiceTableAsync(fileName, targetTag) {
   await this.loadContentAsync(fileName, targetTag);
   const servicesString = localStorage.getItem(KEY_SERVICES);
-  const servicesJSON = JSON.parse(servicesString);
+  servicesJSON = JSON.parse(servicesString);
   const tbody = document.getElementById("data");
+  let i = 0;
   servicesJSON.forEach(service => {
     let row = document.createElement("tr");
+    row.id = i;
     //
     let cellId = document.createElement("td");
     cellId.textContent = service.id;
@@ -73,6 +72,8 @@ async function populateServiceTableAsync(fileName, targetTag) {
     //
     let cellQuantity = document.createElement("td");
     let inputQuantity = document.createElement("input");
+    inputQuantity.className = "form-control form-control-sm";
+    inputQuantity.style = "text-align: right;"
     inputQuantity.type = "text";
     inputQuantity.value = service.availability.quantity;
     cellQuantity.appendChild(inputQuantity);
@@ -80,22 +81,68 @@ async function populateServiceTableAsync(fileName, targetTag) {
     //
     let cellPrice = document.createElement("td");
     let inputPrice = document.createElement("input");
+    inputPrice.className = "form-control form-control-sm";
+    inputPrice.style = "text-align: right;"
     inputPrice.type = "text";
     inputPrice.value = service.price.value;
     cellPrice.appendChild(inputPrice);
     row.appendChild(cellPrice);
     //
+    let cellUnit = document.createElement("td");
+    cellUnit.textContent = service.price.unit;
+    row.appendChild(cellUnit);
+    //
     let cellSave = document.createElement("td");
     let buttomSave = document.createElement("button");
-    buttomSave.textContent = "Save";
+    buttomSave.className = "btn btn-success btn-sm";
+    buttomSave.setAttribute("data-bs-target", "#staticBackdrop");
+    buttomSave.setAttribute("data-bs-toggle", "modal");
+    buttomSave.textContent = "Guardar";
     buttomSave.onclick = function() {
       service.availability.quantity = inputQuantity.value;
       service.price.value = inputPrice.value;
+      document.getElementById("staticBackdropLabel").innerHTML = "Guardar servicio";
+      document.getElementById("serviceName").innerHTML = "Servicio guardado.";
+      document.getElementById("staticBackdropLabel").innerHTML = "Guardar servicio";
+      document.getElementById("serviceName").innerHTML = "Servicio '" + service.name + "' guardado.";
       localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
     };
     cellSave.appendChild(buttomSave);
     row.appendChild(cellSave);
     //
+    let cellDelete = document.createElement("td");
+    let buttomDelete = document.createElement("button");
+    buttomDelete.className = "btn btn-danger btn-sm";
+    buttomDelete.setAttribute("data-bs-target", "#staticBackdrop");
+    buttomDelete.setAttribute("data-bs-toggle", "modal");
+    buttomDelete.textContent = "Eliminar";
+    buttomDelete.onclick = function() {
+      let deleteService = {
+        rowId: row.id,
+        serviceId: service.id
+      };
+      document.getElementById("staticBackdropLabel").innerHTML = "Eliminar servicio";
+      document.getElementById("serviceName").innerHTML = "¿Está seguro de eliminar el servicio '" +service.name + "'?";
+      localStorage.setItem("es", JSON.stringify(deleteService));
+    };
+    cellDelete.appendChild(buttomDelete);
+    row.appendChild(cellDelete);
+    //
     tbody.appendChild(row);
+    //
+    i++;
   });
+  document.getElementById("continue").onclick = () => this.operateService();
+}
+
+function operateService() {
+  if (localStorage.getItem("es")) {
+    const deleteServiceJSON = JSON.parse(localStorage.getItem("es"));
+    servicesJSON = JSON.parse(localStorage.getItem(KEY_SERVICES));
+    servicesJSON = servicesJSON.filter(s => s.id !== deleteServiceJSON.serviceId);
+    localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
+    let row = document.getElementById(deleteServiceJSON.rowId);
+    row.parentNode.removeChild(row);
+    localStorage.removeItem("es");
+  }
 }
