@@ -29,7 +29,7 @@
     "name": "Desarrollo de Software",
     "picture": {
       "height": "500px",
-      "path": "../assets/image/source-code.jpg",
+      "path": "./assets/image/source-code.jpg",
       "width": "500px"
     },
     "price": {
@@ -49,7 +49,7 @@
     "name": "Experiencia de Usuario",
     "picture": {
       "height": "298px",
-      "path": "../assets/image/user-experience.jpg",
+      "path": "./assets/image/user-experience.jpg",
       "width": "500px"
     },
     "price": {
@@ -69,7 +69,7 @@
     "name": "Pruebas de Software",
     "picture": {
       "height": "337px",
-      "path": "../assets/image/testing.png",
+      "path": "./assets/image/testing.png",
       "width": "500px"
     },
     "price": {
@@ -89,7 +89,7 @@
     "name": "Urbanismo",
     "picture": {
       "height": "376px",
-      "path": "../assets/image/architecture.jpg",
+      "path": "./assets/image/architecture.jpg",
       "width": "500px"
     },
     "price": {
@@ -109,7 +109,7 @@
     "name": "Construcción",
     "picture": {
       "height": "375px",
-      "path": "../assets/image/construction.jpeg",
+      "path": "./assets/image/construction.jpeg",
       "width": "500px"
     },
     "price": {
@@ -129,7 +129,7 @@
     "name": "Ilustración",
     "picture": {
       "height": "500px",
-      "path": "../assets/image/illustration.jpg",
+      "path": "./assets/image/illustration.jpg",
       "width": "494px"
     },
     "price": {
@@ -149,7 +149,7 @@
     "name": "Sacos Estampados",
     "picture": {
       "height": "500px",
-      "path": "../assets/image/printed-bag.jpg",
+      "path": "./assets/image/printed-bag.jpg",
       "width": "333px"
     },
     "price": {
@@ -169,7 +169,7 @@
     "name": "Creación y Diseño",
     "picture": {
       "height": "283px",
-      "path": "../assets/image/creativity.jpg",
+      "path": "./assets/image/creativity.jpg",
       "width": "500px"
     },
     "price": {
@@ -189,7 +189,7 @@
     "name": "Medios",
     "picture": {
       "height": "250px",
-      "path": "../assets/image/media.jpg",
+      "path": "./assets/image/media.jpg",
       "width": "500px"
     },
     "price": {
