@@ -2,6 +2,26 @@
   {
     "availability": {
       "label": "Consultores disponibles",
+      "quantity": "2"
+    },
+    "description": "La arquitectura de software define la estructura y el diseño de una aplicación antes de escribir una sola línea de código. Una buena arquitectura permite construir sistemas robustos, seguros y fáciles de mantener. Ya sea para aplicaciones distribuidas, microservicios o soluciones empresariales complejas, diseñar con visión estratégica garantiza rendimiento, escalabilidad y evolución a largo plazo.",
+    "id": "as",
+    "name": "Arquitectura de Software",
+    "picture": {
+      "height": "333px",
+      "path": "../assets/image/software-architecture.png",
+      "width": "500px"
+    },
+    "price": {
+      "currency": "COP",
+      "unit": "día/consultor",
+      "value": "500000"
+    },
+    "promotion": "No"
+  },
+  {
+    "availability": {
+      "label": "Consultores disponibles",
       "quantity": "10"
     },
     "description": "Creamos aplicaciones confiables, escalables y adaptadas a las necesidades específicas de cada cliente. Nuestro enfoque combina análisis, diseño, programación y pruebas para entregar productos de alta calidad que resuelven problemas reales. Desde sistemas empresariales hasta plataformas web y móviles, desarrollamos software que se adapta a tus objetivos y crece contigo.",
