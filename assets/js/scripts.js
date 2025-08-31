@@ -1,11 +1,72 @@
+const KEY_DELETE_SERVICE = "es";
+const KEY_SERVICE = "s";
 const KEY_SERVICES = "ss";
+const KEY_SESSION = "sesion";
+const KEY_USERS = "u";
 const PATH_TO_SERVICES_DATA = "data/services.json";
+const PATH_TO_USERS_DATA = "data/users.json";
+const NAVIGATION_CONFIGURATION = [
+  {
+    "fileId": "details",
+	"filePath": "details.html",
+	"targetTag": "content"
+  },
+  {
+    "fileId": "footer",
+	"filePath": "footer.html",
+	"targetTag": "footer"
+  },
+  {
+    "fileId": "menu",
+	"filePath": "menu.html",
+	"targetTag": "menu"
+  },
+  {
+    "fileId": "slider",
+	"filePath": "slider.html",
+	"targetTag": "content"
+  },
+  {
+    "fileId": "svg",
+	"filePath": "assets/image/svg.txt",
+	"targetTag": "svg"
+  },
+];
 
-async function formatNumber(value) {
-  return new Intl.NumberFormat("es-CO", {
-    currency: "COP",
-    style: "currency",
-  }).format(value);
+function formatNumber(value) {
+  return new Intl.NumberFormat("es-CO", 
+    {
+      currency: "COP",
+      style: "currency",
+    }
+  ).format(value);
+}
+
+function load() {
+  if (!localStorage.getItem(KEY_SERVICES)) {
+    this.loadServicesAsync();
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    loadContentAsync("assets/image/svg.txt", "svg");
+    loadContentAsync("menu.html", "menu");
+    loadContentAsync("footer.html", "footer");
+    const serviceId = localStorage.getItem(KEY_SERVICE);
+    if (serviceId) {
+      loadDetailsAsync("details.html", "content", serviceId);
+	  return;
+    }
+    loadContentAsync("slider.html", "content");
+  });
+}
+
+async function loadDataAsync(filePath) {
+  try {
+    const response = await fetch(filePath);
+	if (!response.ok) {
+//      throw new Error("");
+    }
+    return await response.json();
+  } catch (error) {}
 }
 
 async function loadContentAsync(fileName, targetTag) {
@@ -16,7 +77,7 @@ async function loadContentAsync(fileName, targetTag) {
   } catch (error) {}
 }
 
-async function loadDetailAsync(fileName, targetTag, serviceId) {
+async function loadDetailsAsync(fileName, targetTag, serviceId) {
   try {
     await this.loadContentAsync(fileName, targetTag);
     const servicesString = localStorage.getItem(KEY_SERVICES);
@@ -29,7 +90,7 @@ async function loadDetailAsync(fileName, targetTag, serviceId) {
       document.getElementById("picture").src = service.picture.path;
       document.getElementById("picture").style.height = service.picture.height;
       document.getElementById("picture").style.width = service.picture.width;
-      document.getElementById("price").innerHTML = service.price.currency + (await formatNumber(service.price.value)) + document.getElementById("price").innerHTML.trim();
+      document.getElementById("price").innerHTML = service.price.currency + (formatNumber(service.price.value)) + document.getElementById("price").innerHTML.trim();
       document.getElementById("promotion").innerHTML = service.promotion;
       document.getElementById("quantity").innerHTML = service.availability.quantity;
       document.getElementById("unit").innerHTML = "/" + service.price.unit;
@@ -38,23 +99,38 @@ async function loadDetailAsync(fileName, targetTag, serviceId) {
       document.getElementById("detail").innerHTML = null;
       document.getElementById("name").innerHTML = "Lo sentimos, el servicio seleccionado no se encuentra disponible en este momento.";
     }
-    localStorage.removeItem("s");
+    localStorage.removeItem(KEY_SERVICE);
   } catch (error) {}
 }
 
 async function loadServicesAsync() {
-  try {
-    fetch(PATH_TO_SERVICES_DATA)
-      .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem(KEY_SERVICES, JSON.stringify(data));
-      });
-  } catch (error) {}
+  const servicesJSON = await this.loadDataAsync(PATH_TO_SERVICES_DATA);
+  localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
+}
+
+async function verifyUser() {
+  password = document.getElementById("password").value;
+  user = document.getElementById("user").value;
+  const usersJSON = await this.loadDataAsync(PATH_TO_USERS_DATA);
+  user = usersJSON.filter(u => u.password === password && u.user === user);
+  if (user.length > 0) {
+	localStorage.setItem(KEY_SESSION, true);
+    document.getElementById("form").submit();
+  }
 }
 
 async function populateServiceTableAsync(fileName, targetTag) {
+  const session = localStorage.getItem(KEY_SESSION);
+console.log("localStorage.getItem(KEY_SESSION): ", session);
+  if (session != "true") {
+    return;
+  }
   await this.loadContentAsync(fileName, targetTag);
-  const servicesString = localStorage.getItem(KEY_SERVICES);
+  let servicesString = localStorage.getItem(KEY_SERVICES);
+  if (servicesString == null) {
+    await this.loadServicesAsync();
+    servicesString = localStorage.getItem(KEY_SERVICES);
+  }
   servicesJSON = JSON.parse(servicesString);
   const tbody = document.getElementById("data");
   let i = 0;
@@ -123,7 +199,7 @@ async function populateServiceTableAsync(fileName, targetTag) {
       };
       document.getElementById("staticBackdropLabel").innerHTML = "Eliminar servicio";
       document.getElementById("serviceName").innerHTML = "¿Está seguro de eliminar el servicio '" +service.name + "'?";
-      localStorage.setItem("es", JSON.stringify(deleteService));
+      localStorage.setItem(KEY_DELETE_SERVICE, JSON.stringify(deleteService));
     };
     cellDelete.appendChild(buttomDelete);
     row.appendChild(cellDelete);
@@ -136,13 +212,13 @@ async function populateServiceTableAsync(fileName, targetTag) {
 }
 
 function operateService() {
-  if (localStorage.getItem("es")) {
-    const deleteServiceJSON = JSON.parse(localStorage.getItem("es"));
+  if (localStorage.getItem(KEY_DELETE_SERVICE)) {
+    const deleteServiceJSON = JSON.parse(localStorage.getItem(KEY_DELETE_SERVICE));
     servicesJSON = JSON.parse(localStorage.getItem(KEY_SERVICES));
     servicesJSON = servicesJSON.filter(s => s.id !== deleteServiceJSON.serviceId);
     localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
     let row = document.getElementById(deleteServiceJSON.rowId);
     row.parentNode.removeChild(row);
-    localStorage.removeItem("es");
+    localStorage.removeItem(KEY_DELETE_SERVICE);
   }
 }
