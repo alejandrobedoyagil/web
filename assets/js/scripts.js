@@ -1,35 +1,59 @@
-const KEY_DELETE_SERVICE = "es";
-const KEY_SERVICE = "s";
-const KEY_SERVICES = "ss";
+const KEY_REMOVE_SERVICE = "removeService";
+const KEY_SERVICE = "service";
+const KEY_SERVICES = "services";
 const KEY_SESSION = "sesion";
-const KEY_USERS = "u";
 const PATH_TO_SERVICES_DATA = "data/services.json";
 const PATH_TO_USERS_DATA = "data/users.json";
 const NAVIGATION_CONFIGURATION = [
   {
+    "fileId": "contact",
+    "filePath": "contact.html",
+    "targetTag": "content"
+  },
+  {
     "fileId": "details",
-	"filePath": "details.html",
-	"targetTag": "content"
+    "filePath": "details.html",
+    "targetTag": "content"
   },
   {
     "fileId": "footer",
-	"filePath": "footer.html",
-	"targetTag": "footer"
+    "filePath": "footer.html",
+    "targetTag": "footer"
   },
   {
     "fileId": "menu",
-	"filePath": "menu.html",
-	"targetTag": "menu"
+    "filePath": "menu.html",
+    "targetTag": "menu"
   },
   {
     "fileId": "slider",
-	"filePath": "slider.html",
-	"targetTag": "content"
+    "filePath": "slider.html",
+    "targetTag": "content"
   },
   {
     "fileId": "svg",
-	"filePath": "assets/image/svg.txt",
-	"targetTag": "svg"
+    "filePath": "assets/image/svg.txt",
+    "targetTag": "svg"
+  },
+  {
+    "fileId": "who-are-we",
+    "filePath": "who-are-we.html",
+    "targetTag": "content"
+  },
+  {
+    "fileId": "services",
+    "filePath": "services.html",
+    "targetTag": "content"
+  },
+  {
+    "fileId": "catalog",
+    "filePath": "catalog.html",
+    "targetTag": "content"
+  },
+  {
+    "fileId": "administration",
+    "filePath": "administration.html",
+    "targetTag": "content"
   },
 ];
 
@@ -47,39 +71,47 @@ function load() {
     this.loadServicesAsync();
   }
   document.addEventListener("DOMContentLoaded", function () {
-    loadContentAsync("assets/image/svg.txt", "svg");
-    loadContentAsync("menu.html", "menu");
-    loadContentAsync("footer.html", "footer");
+    loadContentAsync("svg");
+    loadContentAsync("menu");
+    loadContentAsync("footer");
     const serviceId = localStorage.getItem(KEY_SERVICE);
     if (serviceId) {
-      loadDetailsAsync("details.html", "content", serviceId);
-	  return;
+      loadDetailsAsync(serviceId);
+      return;
     }
-    loadContentAsync("slider.html", "content");
+    loadContentAsync("slider");
   });
 }
 
 async function loadDataAsync(filePath) {
   try {
     const response = await fetch(filePath);
-	if (!response.ok) {
-//      throw new Error("");
+    if (!response.ok) {
+      throw new Error("error");
     }
     return await response.json();
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-async function loadContentAsync(fileName, targetTag) {
+async function loadContentAsync(fileId) {
   try {
-    const file = await fetch(fileName);
-    const fileContent = await file.text();
-    document.getElementById(targetTag).innerHTML = fileContent;
-  } catch (error) {}
+    const navigationConfiguration = NAVIGATION_CONFIGURATION.find((nc) => nc.fileId === fileId);
+    const response = await fetch(navigationConfiguration.filePath);
+    if (!response.ok) {
+      throw new Error("error");
+    }
+    const fileContent = await response.text();
+    document.getElementById(navigationConfiguration.targetTag).innerHTML = fileContent;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-async function loadDetailsAsync(fileName, targetTag, serviceId) {
+async function loadDetailsAsync(serviceId) {
   try {
-    await this.loadContentAsync(fileName, targetTag);
+    await this.loadContentAsync("details");
     const servicesString = localStorage.getItem(KEY_SERVICES);
     const servicesJSON = JSON.parse(servicesString);
     const service = servicesJSON.find((service) => service.id === serviceId);
@@ -108,21 +140,25 @@ async function loadServicesAsync() {
   localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
 }
 
-async function verifyUser() {
-  password = document.getElementById("password").value;
-  user = document.getElementById("user").value;
-  const usersJSON = await this.loadDataAsync(PATH_TO_USERS_DATA);
-  user = usersJSON.filter(u => u.password === password && u.user === user);
-  if (user.length > 0) {
-	localStorage.setItem(KEY_SESSION, true);
-    document.getElementById("form").submit();
+function operateService() {
+  if (localStorage.getItem(KEY_REMOVE_SERVICE)) {
+    const deleteServiceJSON = JSON.parse(localStorage.getItem(KEY_REMOVE_SERVICE));
+    servicesJSON = JSON.parse(localStorage.getItem(KEY_SERVICES));
+    servicesJSON = servicesJSON.filter(s => s.id !== deleteServiceJSON.serviceId);
+    localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
+    let row = document.getElementById(deleteServiceJSON.rowId);
+    row.parentNode.removeChild(row);
+    localStorage.removeItem(KEY_REMOVE_SERVICE);
   }
 }
 
 async function populateServiceTableAsync(fileName, targetTag) {
   const session = localStorage.getItem(KEY_SESSION);
-console.log("localStorage.getItem(KEY_SESSION): ", session);
   if (session != "true") {
+    document.getElementById("message").innerHTML = "Inicie sesión como administrador para modificar los servicios.";
+    document.getElementById("title").innerHTML = "Administrar";
+    var modal = new bootstrap.Modal(document.getElementById('messages'));
+    modal.show();
     return;
   }
   await this.loadContentAsync(fileName, targetTag);
@@ -199,7 +235,7 @@ console.log("localStorage.getItem(KEY_SESSION): ", session);
       };
       document.getElementById("staticBackdropLabel").innerHTML = "Eliminar servicio";
       document.getElementById("serviceName").innerHTML = "¿Está seguro de eliminar el servicio '" +service.name + "'?";
-      localStorage.setItem(KEY_DELETE_SERVICE, JSON.stringify(deleteService));
+      localStorage.setItem(KEY_REMOVE_SERVICE, JSON.stringify(deleteService));
     };
     cellDelete.appendChild(buttomDelete);
     row.appendChild(cellDelete);
@@ -211,14 +247,30 @@ console.log("localStorage.getItem(KEY_SESSION): ", session);
   document.getElementById("continue").onclick = () => this.operateService();
 }
 
-function operateService() {
-  if (localStorage.getItem(KEY_DELETE_SERVICE)) {
-    const deleteServiceJSON = JSON.parse(localStorage.getItem(KEY_DELETE_SERVICE));
-    servicesJSON = JSON.parse(localStorage.getItem(KEY_SERVICES));
-    servicesJSON = servicesJSON.filter(s => s.id !== deleteServiceJSON.serviceId);
-    localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
-    let row = document.getElementById(deleteServiceJSON.rowId);
-    row.parentNode.removeChild(row);
-    localStorage.removeItem(KEY_DELETE_SERVICE);
+function sendEmail() {
+  document.getElementById("message").innerHTML = "Su mensaje ha sido enviado, en breve nos pondremos en contacto.";
+  document.getElementById("title").innerHTML = "Envío de correo";
+  var modal = new bootstrap.Modal(document.getElementById('messages'));
+  modal.show();
+}
+
+function signOut() {
+  localStorage.removeItem(KEY_SESSION);
+  window.location.href = "index.html";
+}
+
+async function verifyUser() {
+  password = document.getElementById("password").value;
+  user = document.getElementById("user").value;
+  const usersJSON = await this.loadDataAsync(PATH_TO_USERS_DATA);
+  user = usersJSON.filter(u => u.password === password && u.user === user);
+  if (user.length > 0) {
+    localStorage.setItem(KEY_SESSION, true);
+    document.getElementById("form").submit();
+  }
+  else {
+    document.getElementById("message").innerHTML = "Usuario y/o clave no válido(s).";
+    var modal = new bootstrap.Modal(document.getElementById('messages'));
+    modal.show();
   }
 }
