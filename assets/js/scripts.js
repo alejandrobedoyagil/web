@@ -7,6 +7,16 @@ const PATH_TO_USERS_DATA = "data/users.json";
 const REGULAR_EXPRESSION_EMAIL = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const NAVIGATION_CONFIGURATION = [
   {
+    "fileId": "administration",
+    "filePath": "administration.html",
+    "targetTag": "content"
+  },
+  {
+    "fileId": "catalog",
+    "filePath": "catalog.html",
+    "targetTag": "content"
+  },
+  {
     "fileId": "contact",
     "filePath": "contact.html",
     "targetTag": "content"
@@ -27,6 +37,11 @@ const NAVIGATION_CONFIGURATION = [
     "targetTag": "menu"
   },
   {
+    "fileId": "services",
+    "filePath": "services.html",
+    "targetTag": "content"
+  },
+  {
     "fileId": "slider",
     "filePath": "slider.html",
     "targetTag": "content"
@@ -37,23 +52,13 @@ const NAVIGATION_CONFIGURATION = [
     "targetTag": "svg"
   },
   {
+    "fileId": "team",
+    "filePath": "team.html",
+    "targetTag": "content"
+  },
+  {
     "fileId": "who-are-we",
     "filePath": "who-are-we.html",
-    "targetTag": "content"
-  },
-  {
-    "fileId": "services",
-    "filePath": "services.html",
-    "targetTag": "content"
-  },
-  {
-    "fileId": "catalog",
-    "filePath": "catalog.html",
-    "targetTag": "content"
-  },
-  {
-    "fileId": "administration",
-    "filePath": "administration.html",
     "targetTag": "content"
   },
 ];
