@@ -4,6 +4,7 @@ const KEY_SERVICES = "services";
 const KEY_SESSION = "sesion";
 const PATH_TO_SERVICES_DATA = "data/services.json";
 const PATH_TO_USERS_DATA = "data/users.json";
+const REGULAR_EXPRESSION_EMAIL = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const NAVIGATION_CONFIGURATION = [
   {
     "fileId": "contact",
@@ -211,13 +212,30 @@ async function populateServiceTableAsync(fileName, targetTag) {
     buttomSave.setAttribute("data-bs-toggle", "modal");
     buttomSave.textContent = "Guardar";
     buttomSave.onclick = function() {
+      alert = "";
       service.availability.quantity = inputQuantity.value;
       service.price.value = inputPrice.value;
-      document.getElementById("staticBackdropLabel").innerHTML = "Guardar servicio";
-      document.getElementById("serviceName").innerHTML = "Servicio guardado.";
-      document.getElementById("staticBackdropLabel").innerHTML = "Guardar servicio";
-      document.getElementById("serviceName").innerHTML = "Servicio '" + service.name + "' guardado.";
-      localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
+      if (inputQuantity.value.trim().length == 0 || 
+          typeof Number(inputQuantity.value) !== 'number' || 
+          isNaN(inputQuantity.value) || 
+          inputQuantity.value < 0) {
+        alert += "* Cantidad positiva<br>";
+      }
+      if (inputPrice.value.trim().length == 0 ||
+          typeof Number(inputPrice.value) !== 'number' || 
+          isNaN(inputPrice.value) || 
+          inputPrice.value < 0) {
+        alert += "* Precio positivo<br>";
+      }
+      if (alert.length > 0) {
+        document.getElementById("staticBackdropLabel").innerHTML = "Guardar servicio";
+        document.getElementById("serviceName").innerHTML = "Ingrese los siguientes datos:<br>" + alert;
+      }
+      else {
+        document.getElementById("staticBackdropLabel").innerHTML = "Guardar servicio";
+        document.getElementById("serviceName").innerHTML = "Servicio '" + service.name + "' guardado.";
+        localStorage.setItem(KEY_SERVICES, JSON.stringify(servicesJSON));
+      }
     };
     cellSave.appendChild(buttomSave);
     row.appendChild(cellSave);
@@ -248,7 +266,30 @@ async function populateServiceTableAsync(fileName, targetTag) {
 }
 
 function sendEmail() {
-  document.getElementById("message").innerHTML = "Su mensaje ha sido enviado, en breve nos pondremos en contacto.";
+  alert = "";
+  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value;
+  const subject = document.getElementById("subject").value;
+  const text = document.getElementById("text").value;
+  if (email.trim().length == 0 || !verifyEmail(email)) {
+    alert += "* Email válido<br>"
+  }
+  if (name.trim().length == 0) {
+    alert += "* Nombre<br>";
+  }
+  if (subject.trim().length == 0) {
+    alert += "* Asunto<br>";
+  }
+  if (text.trim().length == 0) {
+    alert += "* Mensaje<br>";
+  }
+  if (alert.length > 0) {
+    alert = "Ingrese los siguientes datos:<br>" + alert;
+    document.getElementById("message").innerHTML = alert;
+  }
+  else {
+    document.getElementById("message").innerHTML = "Su mensaje ha sido enviado, en breve nos pondremos en contacto. (simulado)";
+  }
   document.getElementById("title").innerHTML = "Envío de correo";
   var modal = new bootstrap.Modal(document.getElementById('messages'));
   modal.show();
@@ -257,6 +298,10 @@ function sendEmail() {
 function signOut() {
   localStorage.removeItem(KEY_SESSION);
   window.location.href = "index.html";
+}
+
+function verifyEmail(email) {
+  return REGULAR_EXPRESSION_EMAIL.test(email);
 }
 
 async function verifyUser() {
