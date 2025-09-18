@@ -1,3 +1,8 @@
+/*
+ * Author: Alejandro Bedoya
+ * Date: 2025-09-18
+ */
+
 const KEY_REMOVE_SERVICE = "removeService";
 const KEY_SERVICE = "service";
 const KEY_SERVICES = "services";
@@ -89,16 +94,77 @@ function load() {
   });
 }
 
-async function loadDataAsync(filePath) {
-  try {
-    const response = await fetch(filePath);
-    if (!response.ok) {
-      throw new Error("error");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(error);
+async function loadCatalogAsync() {
+  let servicesString = localStorage.getItem(KEY_SERVICES);
+  if (servicesString == null) {
+    await this.loadServicesAsync();
+    servicesString = localStorage.getItem(KEY_SERVICES);
   }
+  servicesJSON = JSON.parse(servicesString);
+  let catalog = document.getElementById("catalog");
+  let i = 0;
+  servicesJSON.forEach(service => {
+    let module = i % 2;
+    //
+    let div1 = document.createElement("div");
+    div1.className = "row featurette";
+    //
+    let div1_1 = document.createElement("div");
+    div1_1.className = module == 0 ? "col-md-7" : "col-md-7 order-md-2";
+    //
+    let h2 = document.createElement("h2");
+    h2.className = "featurette-heading fw-normal lh-1";
+    h2.textContent = service.title;
+    //
+    let span = document.createElement("span");
+    span.className = "text-body-secondary";
+    span.textContent = service.subtitle;
+    //
+    let p1 = document.createElement("p");
+    p1.className = "lead";
+    p1.textContent = service.description;
+    //
+    let p2 = document.createElement("p");
+    //
+    let a = document.createElement("a");
+    a.className = "btn btn-lg btn-primary";
+    a.setAttribute("href", "");
+    a.textContent = "Disponibilidad y precio";
+    a.onclick = function() {
+      localStorage.setItem(KEY_SERVICE, service.id);
+    };
+    //
+    let div1_2 = document.createElement("div");
+    div1_2.className = module == 0 ? "col-md-5" : "col-md-5 order-md-1";
+    //
+    let div1_2_1 = document.createElement("div");
+    div1_2_1.className = "d-flex align-items-center";
+    div1_2_1.style.height = "500px";
+    //
+    let img = document.createElement("img");
+    img.src = service.picture.path;
+    img.style.height = service.picture.height;
+    img.style.width = service.picture.width;
+    //
+    h2.appendChild(span);
+    p2.appendChild(a);
+    div1_2_1.appendChild(img);
+    div1_2.appendChild(div1_2_1);
+    div1_1.appendChild(h2);
+    div1_1.appendChild(p1);
+    div1_1.appendChild(p2);
+    div1.appendChild(div1_1);
+    div1.appendChild(div1_2);
+    catalog.appendChild(div1);
+    //
+    if ((i + 1) < servicesJSON.length) {
+      let hr = document.createElement("hr");
+      hr.className = "featurette-divider";
+      catalog.appendChild(hr);
+    }
+    //
+    i++;
+  });
 }
 
 async function loadContentAsync(fileId) {
@@ -110,9 +176,31 @@ async function loadContentAsync(fileId) {
     }
     const fileContent = await response.text();
     document.getElementById(navigationConfiguration.targetTag).innerHTML = fileContent;
-    if (fileId == "catalog") {
-      loadCatalogAsync();
+    switch(fileId) {
+      case "catalog":
+        loadCatalogAsync();
+        break;
+	  case "menu":
+        if (localStorage.getItem(KEY_SESSION)) {
+          document.getElementById("sign").innerHTML = "Cerrar sesión";
+        }
+        else {
+          document.getElementById("sign").innerHTML = "Iniciar sesión";
+        }
+        break;
     }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function loadDataAsync(filePath) {
+  try {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error("error");
+    }
+    return await response.json();
   } catch (error) {
     console.error(error);
   }
@@ -303,9 +391,14 @@ function sendEmail() {
   modal.show();
 }
 
-function signOut() {
-  localStorage.removeItem(KEY_SESSION);
-  window.location.href = "index.html";
+function sign() {
+  if (localStorage.getItem(KEY_SESSION)) {
+    localStorage.removeItem(KEY_SESSION);
+    window.location.href = "index.html";
+  }
+  else {
+    window.location.href = "sign-in.html";
+  }
 }
 
 function verifyEmail(email) {
@@ -326,75 +419,4 @@ async function verifyUser() {
     var modal = new bootstrap.Modal(document.getElementById('messages'));
     modal.show();
   }
-}
-
-async function loadCatalogAsync() {
-  let servicesString = localStorage.getItem(KEY_SERVICES);
-//  if (servicesString == null) {
-//    await this.loadServicesAsync();
-//    servicesString = localStorage.getItem(KEY_SERVICES);
-//  }
-  servicesJSON = JSON.parse(servicesString);
-  let catalog = document.getElementById("catalog");
-  let i = 0;
-  servicesJSON.forEach(service => {
-    let module = i % 2;
-    //
-    let div1 = document.createElement("div");
-    div1.className = "row featurette";
-    //
-    let div1_1 = document.createElement("div");
-    div1_1.className = module == 0 ? "col-md-7" : "col-md-7 order-md-2";
-    //
-    let h2 = document.createElement("h2");
-    h2.className = "featurette-heading fw-normal lh-1";
-    h2.textContent = service.title;
-    //
-    let span = document.createElement("span");
-    span.className = "text-body-secondary";
-    span.textContent = service.subtitle;
-    //
-    let p1 = document.createElement("p");
-    p1.className = "lead";
-    p1.textContent = service.description;
-    //
-    let p2 = document.createElement("p");
-    //
-    let a = document.createElement("a");
-    a.className = "btn btn-lg btn-primary";
-    a.setAttribute("href", "");
-    a.textContent = "Disponibilidad y precio";
-    a.onclick = function() {
-      localStorage.setItem(KEY_SERVICE, service.id);
-    };
-    //
-    let div1_2 = document.createElement("div");
-    div1_2.className = module == 0 ? "col-md-5" : "col-md-5 order-md-1";
-    //
-    let div1_2_1 = document.createElement("div");
-    div1_2_1.className = "d-flex align-items-center";
-    div1_2_1.style.height = "500px";
-    //
-    let img = document.createElement("img");
-    img.src = service.picture.path;
-    img.style.height = service.picture.height;
-    img.style.width = service.picture.width;
-    //
-    let hr = document.createElement("hr");
-    hr.className = "featurette-divider";
-    //
-    h2.appendChild(span);
-    p2.appendChild(a);
-    div1_2_1.appendChild(img);
-    div1_2.appendChild(div1_2_1);
-    div1_1.appendChild(h2);
-    div1_1.appendChild(p1);
-    div1_1.appendChild(p2);
-    div1.appendChild(div1_1);
-    div1.appendChild(div1_2);
-    catalog.appendChild(div1);
-    catalog.appendChild(hr);
-    //
-    i++;
-  });
 }

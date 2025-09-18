@@ -21,13 +21,11 @@
               <li><a class="dropdown-item" onclick="javascript: loadContentAsync('contact');">Contáctenos</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li><a class="dropdown-item" onclick="javascript: populateServiceTableAsync('administration');">Administración</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" onclick="javascript: signOut();">Cerrar sesión</a></li>
             </ul>
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <a class="btn btn-outline-success" role="button" data-bs-toggle="button" onclick="javascript: window.location.href = 'sign-in.html';">Iniciar sesión</a>
+          <a class="btn btn-outline-success" id="sign" role="button" data-bs-toggle="button" onclick="javascript: sign();"></a>
         </form>
       </div>
     </div>
