@@ -17,7 +17,9 @@
       "unit": "día/consultor",
       "value": "500000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Arquitectura de software inteligente.",
+    "subtitle": "La base sólida para sistemas escalables y eficientes."
   },
   {
     "availability": {
@@ -37,7 +39,9 @@
       "unit": "día/consultor",
       "value": "250000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Desarrollo de software a tu medida.",
+    "subtitle": "Soluciones digitales que impulsan tu negocio."
   },
   {
     "availability": {
@@ -57,7 +61,9 @@
       "unit": "día/consultor",
       "value": "150000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Experiencia de usuario que conecta.",
+    "subtitle": "Diseñamos pensando en las personas."
   },
   {
     "availability": {
@@ -77,7 +83,9 @@
       "unit": "día/consultor",
       "value": "100000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Pruebas que garantizan calidad.",
+    "subtitle": "Detectamos errores antes de que lo hagan tus usuarios."
   },
   {
     "availability": {
@@ -97,7 +105,9 @@
       "unit": "día/arquitecto",
       "value": "500000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Urbanismo para ciudades vivas.",
+    "subtitle": "Planificamos entornos sostenibles, funcionales y humanos."
   },
   {
     "availability": {
@@ -117,7 +127,9 @@
       "unit": "día/arquitecto",
       "value": "500000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Construcción que transforma espacios.",
+    "subtitle": "Solidez, eficiencia y compromiso en cada proyecto."
   },
   {
     "availability": {
@@ -137,7 +149,9 @@
       "unit": "día/ilustrador",
       "value": "150000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Ilustración con identidad propia.",
+    "subtitle": "Damos vida visual a ideas, marcas y relatos."
   },
   {
     "availability": {
@@ -157,7 +171,9 @@
       "unit": "Unidad",
       "value": "50000"
     },
-    "promotion": "Si"
+    "promotion": "Si",
+    "title": "Sacos estampados con estilo único.",
+    "subtitle": "Diseños que expresan tu personalidad."
   },
   {
     "availability": {
@@ -177,7 +193,9 @@
       "unit": "día/publicista",
       "value": "400000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Creación y diseño de mensajes publicitarios.",
+    "subtitle": "Comunica, impacta y conecta con tu audiencia."
   },
   {
     "availability": {
@@ -197,6 +215,8 @@
       "unit": "día/publicista",
       "value": "400000"
     },
-    "promotion": "No"
+    "promotion": "No",
+    "title": "Planificación y compra de medios.",
+    "subtitle": "Maximiza el alcance y la efectividad de tu inversión publicitaria."
   }
 ]
