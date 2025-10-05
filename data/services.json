@@ -19,7 +19,8 @@
     },
     "promotion": "No",
     "title": "Arquitectura de software inteligente.",
-    "subtitle": "La base sólida para sistemas escalables y eficientes."
+    "subtitle": "La base sólida para sistemas escalables y eficientes.",
+	"view": "https://www.youtube.com/embed/Hnph1a8grrE?start=12&vq=hd1080"
   },
   {
     "availability": {
@@ -41,7 +42,8 @@
     },
     "promotion": "No",
     "title": "Desarrollo de software a tu medida.",
-    "subtitle": "Soluciones digitales que impulsan tu negocio."
+    "subtitle": "Soluciones digitales que impulsan tu negocio.",
+	"view": "https://www.youtube.com/embed/mltGJS04lQ0?start=47&vq=hd1080"
   },
   {
     "availability": {
@@ -63,7 +65,8 @@
     },
     "promotion": "No",
     "title": "Desarrollo de Aplicaciones Móviles a Medida.",
-    "subtitle": "Soluciones móviles personalizadas para tu negocio, diseñadas para un rendimiento excepcional y una experiencia de usuario fluida."
+    "subtitle": "Soluciones móviles personalizadas para tu negocio, diseñadas para un rendimiento excepcional y una experiencia de usuario fluida.",
+	"view": ""
   },
   {
     "availability": {
@@ -85,7 +88,8 @@
     },
     "promotion": "No",
     "title": "Desarrollo de Software como Servicio (SaaS).",
-    "subtitle": "Soluciones en la nube accesibles, escalables y siempre disponibles para tu negocio."
+    "subtitle": "Soluciones en la nube accesibles, escalables y siempre disponibles para tu negocio.",
+	"view": ""
   },
   {
     "availability": {
@@ -107,7 +111,8 @@
     },
     "promotion": "No",
     "title": "Desarrollo de Software de Inteligencia Artificial.",
-    "subtitle": "Automatiza procesos, toma decisiones inteligentes y transforma tu negocio con soluciones basadas en IA."
+    "subtitle": "Automatiza procesos, toma decisiones inteligentes y transforma tu negocio con soluciones basadas en IA.",
+	"view": ""
   },
   {
     "availability": {
@@ -129,7 +134,8 @@
     },
     "promotion": "No",
     "title": "Mantenimiento y Soporte de Software Empresarial.",
-    "subtitle": "Garantiza el rendimiento, la seguridad y la continuidad operativa de tus sistemas."
+    "subtitle": "Garantiza el rendimiento, la seguridad y la continuidad operativa de tus sistemas.",
+	"view": ""
   },
   {
     "availability": {
@@ -151,7 +157,8 @@
     },
     "promotion": "No",
     "title": "Servicios de Ciberseguridad.",
-    "subtitle": "Protege tu información, sistemas y operaciones con soluciones de seguridad digital de alto nivel."
+    "subtitle": "Protege tu información, sistemas y operaciones con soluciones de seguridad digital de alto nivel.",
+	"view": ""
   },
   {
     "availability": {
@@ -173,7 +180,8 @@
     },
     "promotion": "No",
     "title": "Experiencia de usuario que conecta.",
-    "subtitle": "Diseñamos pensando en las personas."
+    "subtitle": "Diseñamos pensando en las personas.",
+	"view": ""
   },
   {
     "availability": {
@@ -195,7 +203,8 @@
     },
     "promotion": "No",
     "title": "Pruebas que garantizan calidad.",
-    "subtitle": "Detectamos errores antes de que lo hagan tus usuarios."
+    "subtitle": "Detectamos errores antes de que lo hagan tus usuarios.",
+	"view": ""
   },
   {
     "availability": {
@@ -217,6 +226,7 @@
     },
     "promotion": "Si",
     "title": "Servicios de Computación en la Nube para Empresa.",
-    "subtitle": "Infraestructura flexible y escalable en la nube para optimizar tus recursos tecnológicos."
+    "subtitle": "Infraestructura flexible y escalable en la nube para optimizar tus recursos tecnológicos.",
+	"view": ""
   }
 ]

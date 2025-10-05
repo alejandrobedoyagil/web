@@ -223,6 +223,10 @@ async function loadDetailsAsync(serviceId) {
       document.getElementById("promotion").innerHTML = service.promotion;
       document.getElementById("quantity").innerHTML = service.availability.quantity;
       document.getElementById("unit").innerHTML = "/" + service.price.unit;
+      if (service.view) {
+        document.getElementById("iframe").src = service.view;
+        document.getElementById("view").style.display = "inline";
+      }
     }
     else {
       document.getElementById("detail").innerHTML = null;

@@ -1,41 +1,49 @@
 <main class="container">
-<body>
-  <div class="bg-body-tertiary p-5 rounded">
-    <header>
-      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal text-body-emphasis" id="name"></h1>
-        <p class="fs-5 text-body-secondary" id="description"></p>
-      </div>
-    </header>
-    <div id="detail">
-      <main>
-        <div class="row row-cols-1 row-cols-md-2 mb-1 text-center">
-          <div class="col">
-            <img id="picture" />
-          </div>
-          <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Precio y disponibilidad</h4>
+  <body>
+    <div class="bg-body-tertiary p-5 rounded">
+      <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+          <h1 class="display-4 fw-normal text-body-emphasis" id="name"></h1>
+          <p class="fs-5 text-body-secondary" id="description"></p>
+        </div>
+      </header>
+      <div id="detail">
+        <main>
+          <div class="row">
+            <div class="row row-cols-1 row-cols-md-2 mb-1 text-center">
+              <div class="col">
+                <img id="picture" />
               </div>
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title" id="price">
-                  <small class="text-body-secondary fw-light" id="unit"></small>
-                </h1>
-                <ul class="list-unstyled mt-4 mb-4">
-                  <li id="label">
-                    :<div id="quantity"></div>
-                  </li>
-                  <li>
-                    Promoción:<div id="promotion"></div>
-                  </li>
-                </ul>
+              <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Precio y disponibilidad</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title" id="price">
+                      <small class="text-body-secondary fw-light" id="unit"></small>
+                    </h1>
+                    <ul class="list-unstyled mt-4 mb-4">
+                      <li id="label">
+                        :<div id="quantity"></div>
+                      </li>
+                      <li>
+                        Promoción:<div id="promotion"></div>
+                      </li>
+                      <li id="view" style="display: none;">
+                        <a class="btn btn-lg btn-primary" onclick="javascript: document.getElementById('iframe').style.display='inline';">Ver un caso real de consultoría</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
+            <div>
+              <iframe id="iframe" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="600" style="display: none;" width="100%" allowfullscreen></iframe>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </main>
