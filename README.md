@@ -79,12 +79,12 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 |who-are-we.html|Página que muestra quiénes somos|
 
 ## Estructura de los archivos de datos
-- Archivo de datos del catálogo de servicios: services.json
+### Archivo de datos del catálogo de servicios: services.json
 ```json
 [
   {
     "availability": {
-      "label": "Texto a mostrar en el rótulo precio y disponibilidad",
+      "label": "Texto a mostrar en el rótulo precio y disponibilidad del servicio",
       "quantity": "Cantidad a mostrar en la cantidad disponible del servicio"
     },
     "description": "Texto a mostrar en la descripción del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
@@ -110,12 +110,50 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
   }
 ]
 ```
-- Archivo de usuarios administradores: users.json 
+Ejemplo:
+```json
+[
+  {
+    "availability": {
+      "label": "Consultores disponibles",
+      "quantity": "2"
+    },
+    "description": "La arquitectura de software define la estructura y el diseño de una aplicación antes de escribir una sola línea de código. Una buena arquitectura permite construir sistemas robustos, seguros y fáciles de mantener. Ya sea para aplicaciones distribuidas, microservicios o soluciones empresariales complejas, diseñar con visión estratégica garantiza rendimiento, escalabilidad y evolución a largo plazo.",
+    "id": "as",
+    "name": "Arquitectura de Software",
+    "picture": {
+      "height": "333px",
+      "path": "./assets/image/software-architecture.png",
+      "width": "500px"
+    },
+    "price": {
+      "currency": "COP",
+      "unit": "día/consultor",
+      "value": "500000"
+    },
+    "promotion": "No",
+    "title": "Arquitectura de software inteligente.",
+    "subtitle": "La base sólida para sistemas escalables y eficientes.",
+    "view": "https://www.youtube.com/embed/Hnph1a8grrE?start=12&vq=hd1080"
+  }
+]
+```
+
+### Archivo de usuarios administradores: users.json 
 ```json
 [
   {
     "user": "Texto con el usuario",
     "password": "Texto con la clave"
+  }
+]
+```
+Ejemplo:
+```json
+[
+  {
+    "user": "admin",
+    "password": "1234"
   }
 ]
 ```
