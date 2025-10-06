@@ -78,6 +78,50 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 |team.html|Página que muestra el equipo de trabajo|
 |who-are-we.html|Página que muestra quiénes somos|
 
+## Estructura de los archivos de datos
+- Archivo de datos del catálogo de servicios: services.json
+```json
+[
+  {
+    "availability": {
+      "label": "Consultores disponibles",
+      "quantity": "2"
+    },
+    "description": "La arquitectura de software define la estructura y el diseño de una aplicación antes de escribir una sola línea de código. Una buena arquitectura permite construir sistemas robustos, seguros y fáciles de mantener. Ya sea para aplicaciones distribuidas, microservicios o soluciones empresariales complejas, diseñar con visión estratégica garantiza rendimiento, escalabilidad y evolución a largo plazo.",
+    "id": "as",
+    "name": "Arquitectura de Software",
+    "picture": {
+      "height": "333px",
+      "path": "./assets/image/software-architecture.png",
+      "width": "500px"
+    },
+    "price": {
+      "currency": "COP",
+      "unit": "día/consultor",
+      "value": "500000"
+    },
+    "promotion": "No",
+    "title": "Arquitectura de software inteligente.",
+    "subtitle": "La base sólida para sistemas escalables y eficientes.",
+    "view": "https://www.youtube.com/embed/Hnph1a8grrE?start=12&vq=hd1080"
+  },
+  {
+    ...
+  }
+```
+- Archivo de usuarios administradores: users.json 
+```json
+{
+  "nombre": "Alejandro",
+  "edad": 30,
+  "servicios": [
+    "Desarrollo web",
+    "Diseño UI/UX",
+    "Consultoría"
+  ]
+}
+```
+
 ## Tecnologías utilizadas
 |Tecnología|Descripción|
 |---|---|
@@ -88,7 +132,7 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 |HTML 5|Para la estructura del sitio web|
 
 ## Características
+- Datos paramétricos: Tanto el catálogo de servicios como la información de los usuarios se almacenan en archivos JSON. Estos archivos pueden ser modificados siguiendo la estructura establecida, lo que permite actualizar el contenido del sitio de forma dinámica y flexible.
 - Diseño Responsivo: El sitio se adapta a diferentes tamaños de pantalla (móviles, tabletas, escritorios).
 - Interactividad: Animaciones sutiles y efectos en los elementos del sitio.
-- Single Page Application: Este sitio web está construido como una Single Page Application (SPA). Todo el contenido y la estructura de las diferentes secciones se encuentra centralizado en el archivo index.html.<br>
-En lugar de cargar nuevas páginas al navegar, el sitio muestra y oculta dinámicamente secciones dentro de la misma página, lo que permite una experiencia de usuario más fluida y rápida. Esto también reduce las solicitudes al servidor, ya que no se recargan páginas completas, sino que se manipula el contenido desde el front-end utilizando JavaScript y/o técnicas de navegación interna con anclas (#).
+- Single Page Application: Este sitio web está construido como una Single Page Application (SPA). Todo el contenido y la estructura de las diferentes secciones se encuentra centralizado en el archivo index.html.<br>En lugar de cargar nuevas páginas al navegar, el sitio muestra, oculta e inyecta dinámicamente secciones dentro de la misma página, lo que permite una experiencia de usuario más fluida y rápida. Esto también reduce las solicitudes al servidor, ya que no se recargan páginas completas, sino que se manipula el contenido desde el front-end utilizando JavaScript y/o técnicas de navegación interna con anclas (#).
