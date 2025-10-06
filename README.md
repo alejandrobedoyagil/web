@@ -84,42 +84,40 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 [
   {
     "availability": {
-      "label": "Consultores disponibles",
-      "quantity": "2"
+      "label": "Texto a mostrar en el rótulo precio y disponibilidad",
+      "quantity": "Cantidad a mostrar en la cantidad disponible del servicio"
     },
-    "description": "La arquitectura de software define la estructura y el diseño de una aplicación antes de escribir una sola línea de código. Una buena arquitectura permite construir sistemas robustos, seguros y fáciles de mantener. Ya sea para aplicaciones distribuidas, microservicios o soluciones empresariales complejas, diseñar con visión estratégica garantiza rendimiento, escalabilidad y evolución a largo plazo.",
-    "id": "as",
-    "name": "Arquitectura de Software",
+    "description": "Texto a mostrar en la descripción del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+    "id": "Código único del servicio",
+    "name": "Texto a mostrar como nombre del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
     "picture": {
-      "height": "333px",
-      "path": "./assets/image/software-architecture.png",
-      "width": "500px"
+      "height": "Altura de la imagen a mostrar tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+      "path": "Ruta absoluta de la imagen a mostrar tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+      "width": "Ancho de la imagen a mostrar tanto en el catálogo de servicios como en la disponibilidad y precio del servicio"
     },
     "price": {
-      "currency": "COP",
-      "unit": "día/consultor",
-      "value": "500000"
+      "currency": "Moneda a mostrar en la disponibilidad y precio del servicio",
+      "unit": "Unidad de medida del servicio a mostrar en la disponibilidad y precio del servicio",
+      "value": "Valor unitario del servicio a mostrar en la disponibilidad y precio del servicio"
     },
-    "promotion": "No",
-    "title": "Arquitectura de software inteligente.",
-    "subtitle": "La base sólida para sistemas escalables y eficientes.",
-    "view": "https://www.youtube.com/embed/Hnph1a8grrE?start=12&vq=hd1080"
+    "promotion": "Texto a mostrar en la disponibilidad y precio del servicio",
+    "title": "Texto a mostrar en el título del servicio en el catálogo de servicios",
+    "subtitle": "Texto a mostrar en el subtítulo del servicio en el catálogo de servicios",
+    "view": "Dirección del video a mostrar en disponibilidad y precio del servicio"
   },
   {
     ...
   }
+]
 ```
 - Archivo de usuarios administradores: users.json 
 ```json
-{
-  "nombre": "Alejandro",
-  "edad": 30,
-  "servicios": [
-    "Desarrollo web",
-    "Diseño UI/UX",
-    "Consultoría"
-  ]
-}
+[
+  {
+    "user": "Texto con el usuario",
+    "password": "Texto con la clave"
+  }
+]
 ```
 
 ## Tecnologías utilizadas
