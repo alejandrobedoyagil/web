@@ -172,3 +172,11 @@ Ejemplo:
 - Diseño Responsivo: El sitio se adapta a diferentes tamaños de pantalla (móviles, tabletas, escritorios).
 - Interactividad: Animaciones sutiles y efectos en los elementos del sitio.
 - Single Page Application: Este sitio web está construido como una Single Page Application (SPA). Todo el contenido y la estructura de las diferentes secciones se encuentra centralizado en el archivo index.html.<br>En lugar de cargar nuevas páginas al navegar, el sitio muestra, oculta e inyecta dinámicamente secciones dentro de la misma página, lo que permite una experiencia de usuario más fluida y rápida. Esto también reduce las solicitudes al servidor, ya que no se recargan páginas completas, sino que se manipula el contenido desde el front-end utilizando JavaScript y/o técnicas de navegación interna con anclas (#).
+
+## Autor
+**José Alejandro Bedoya Gil**<br>
+[alejandrobedoyagil.github.io](https://alejandrobedoyagil.github.io)
+
+## Créditos
+Diseñado y desarrollado por José Alejandro Bedoya Gil.<br>
+Gracias a tecnologías como Bootstrap, CSS, HTML y JavaScript.
