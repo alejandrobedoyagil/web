@@ -61,6 +61,7 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 ├─ slider.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Página que muestra el slider<br>
 ├─ team.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Página que muestra el equipo de trabajo<br>
 └─ who-are-we.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Página que muestra quiénes somos<br>
+
 ## Archivos principales
 |Archivo|Descripción|
 |---|---|
@@ -76,3 +77,18 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 |slider.html|Página que muestra el slider|
 |team.html|Página que muestra el equipo de trabajo|
 |who-are-we.html|Página que muestra quiénes somos|
+
+## Tecnologías utilizadas
+|Tecnología|Descripción|
+|---|---|
+|Bootstrap 5|Framework CSS para diseño responsivo y componentes predefinidos que agilizan el desarrollo|
+|CSS 3|Para el diseño y estilo visual del sitio|
+|GitHub Pages|Para alojar el sitio web de manera gratuita|
+|JavaScript|Para interactividad (como formularios de contacto o validaciones)|
+|HTML 5|Para la estructura del sitio web|
+
+## Características
+- Diseño Responsivo: El sitio se adapta a diferentes tamaños de pantalla (móviles, tabletas, escritorios).
+- Interactividad: Animaciones sutiles y efectos en los elementos del sitio.
+- Single Page Application: Este sitio web está construido como una Single Page Application (SPA). Todo el contenido y la estructura de las diferentes secciones se encuentra centralizado en el archivo index.html.<br>
+En lugar de cargar nuevas páginas al navegar, el sitio muestra y oculta dinámicamente secciones dentro de la misma página, lo que permite una experiencia de usuario más fluida y rápida. Esto también reduce las solicitudes al servidor, ya que no se recargan páginas completas, sino que se manipula el contenido desde el front-end utilizando JavaScript y/o técnicas de navegación interna con anclas (#).
