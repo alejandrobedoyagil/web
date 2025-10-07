@@ -195,11 +195,10 @@ En el caso de los servicios, cualquier modificación o eliminación actualiza au
 
 ## Autor
 **José Alejandro Bedoya Gil**<br>
-[alejandrobedoyagil.github.io](https://alejandrobedoyagil.github.io)
 
 ## Créditos
 Diseñado y desarrollado por José Alejandro Bedoya Gil.<br>
 Gracias a tecnologías como Bootstrap, CSS, HTML y JavaScript.
 
 ## Sitio Web Professional Services S.A.S.
-https://alejandrobedoyagil.github.io/web
+<a href="https://alejandrobedoyagil.github.io/web" target="_blank">https://alejandrobedoyagil.github.io/web</a>
