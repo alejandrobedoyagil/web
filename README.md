@@ -84,25 +84,25 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 [
   {
     "availability": {
-      "label": "Texto a mostrar en el rótulo precio y disponibilidad del servicio",
+      "label": "Texto del rótulo precio y disponibilidad del servicio",
       "quantity": "Cantidad a mostrar en la cantidad disponible del servicio"
     },
-    "description": "Texto a mostrar en la descripción del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+    "description": "Texto de la descripción del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
     "id": "Código único del servicio",
-    "name": "Texto a mostrar como nombre del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+    "name": "Texto del nombre del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
     "picture": {
-      "height": "Altura de la imagen a mostrar tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
-      "path": "Ruta absoluta de la imagen a mostrar tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
-      "width": "Ancho de la imagen a mostrar tanto en el catálogo de servicios como en la disponibilidad y precio del servicio"
+      "height": "Altura de la imagen tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+      "path": "Ruta absoluta de la imagen tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+      "width": "Ancho de la imagen tanto en el catálogo de servicios como en la disponibilidad y precio del servicio"
     },
     "price": {
-      "currency": "Moneda a mostrar en la disponibilidad y precio del servicio",
-      "unit": "Unidad de medida del servicio a mostrar en la disponibilidad y precio del servicio",
-      "value": "Valor unitario del servicio a mostrar en la disponibilidad y precio del servicio"
+      "currency": "Moneda de la disponibilidad y precio del servicio",
+      "unit": "Unidad de medida del servicio en la disponibilidad y precio del servicio",
+      "value": "Valor unitario del servicio en la disponibilidad y precio del servicio"
     },
-    "promotion": "Texto a mostrar en la disponibilidad y precio del servicio",
-    "title": "Texto a mostrar en el título del servicio en el catálogo de servicios",
-    "subtitle": "Texto a mostrar en el subtítulo del servicio en el catálogo de servicios",
+    "promotion": "Texto de la promoción en la disponibilidad y precio del servicio",
+    "title": "Texto del título del servicio en el catálogo de servicios",
+    "subtitle": "Texto del subtítulo del servicio en el catálogo de servicios",
     "view": "Dirección del video a mostrar en disponibilidad y precio del servicio"
   },
   {
@@ -143,8 +143,8 @@ Ejemplo:
 ```json
 [
   {
-    "user": "Texto con el usuario",
-    "password": "Texto con la clave"
+    "user": "Usuario",
+    "password": "Clave"
   }
 ]
 ```
