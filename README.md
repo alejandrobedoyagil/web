@@ -200,5 +200,5 @@ En el caso de los servicios, cualquier modificación o eliminación actualiza au
 Diseñado y desarrollado por José Alejandro Bedoya Gil.<br>
 Gracias a tecnologías como Bootstrap, CSS, HTML y JavaScript.
 
-## Sitio Web Professional Services S.A.S.
-<a href="https://alejandrobedoyagil.github.io/web" target="_blank">https://alejandrobedoyagil.github.io/web</a>
+## Visitar Sitio Web Professional Services S.A.S.
+https://alejandrobedoyagil.github.io/web
