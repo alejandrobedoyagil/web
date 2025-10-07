@@ -84,25 +84,25 @@ Professional Services S.A.S. es una empresa cuyo objeto social es la venta de su
 [
   {
     "availability": {
-      "label": "Texto del rótulo precio y disponibilidad del servicio",
-      "quantity": "Cantidad a mostrar en la cantidad disponible del servicio"
+      "label": "Rótulo en precio y disponibilidad del servicio",
+      "quantity": "Cantidad disponible del servicio"
     },
-    "description": "Texto de la descripción del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+    "description": "Descripción del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
     "id": "Código único del servicio",
-    "name": "Texto del nombre del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
+    "name": "Nombre del servicio tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
     "picture": {
       "height": "Altura de la imagen tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
       "path": "Ruta absoluta de la imagen tanto en el catálogo de servicios como en la disponibilidad y precio del servicio",
       "width": "Ancho de la imagen tanto en el catálogo de servicios como en la disponibilidad y precio del servicio"
     },
     "price": {
-      "currency": "Moneda de la disponibilidad y precio del servicio",
-      "unit": "Unidad de medida del servicio en la disponibilidad y precio del servicio",
-      "value": "Valor unitario del servicio en la disponibilidad y precio del servicio"
+      "currency": "Moneda en la que se vende el servicio",
+      "unit": "Unidad de medida en la que se vende el servicio",
+      "value": "Valor unitario del servicio"
     },
-    "promotion": "Texto de la promoción en la disponibilidad y precio del servicio",
-    "title": "Texto del título del servicio en el catálogo de servicios",
-    "subtitle": "Texto del subtítulo del servicio en el catálogo de servicios",
+    "promotion": "Promoción (Si/No) en la disponibilidad y precio del servicio",
+    "title": "Título del servicio en el catálogo de servicios",
+    "subtitle": "Subtítulo del servicio en el catálogo de servicios",
     "view": "Dirección del video a mostrar en disponibilidad y precio del servicio"
   },
   {
