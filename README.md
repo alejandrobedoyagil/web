@@ -173,10 +173,10 @@ Ejemplo:
 - Interactividad: Animaciones sutiles y efectos en los elementos del sitio.
 - Single Page Application: Este sitio web está construido como una Single Page Application (SPA). Todo el contenido y la estructura de las diferentes secciones se encuentra centralizado en el archivo index.html.<br>En lugar de cargar nuevas páginas al navegar, el sitio muestra, oculta e inyecta dinámicamente secciones dentro de la misma página, lo que permite una experiencia de usuario más fluida y rápida. Esto también reduce las solicitudes al servidor, ya que no se recargan páginas completas, sino que se manipula el contenido desde el front-end utilizando JavaScript y/o técnicas de navegación interna con anclas (#).
 
-## Funcionamiento del Sitio Web
+## Funcionamiento del sitio web
 Este sitio web está diseñado con una arquitectura similar a una Single Page Application (SPA), lo que permite una experiencia de usuario más fluida al evitar recargas completas de página.
 
-### Estructura de Carga Inicial
+### Estructura de carga inicial
 Al acceder al sitio, se carga el archivo principal index.html, que actúa como plantilla base. En este archivo se inyectan dinámicamente los siguientes componentes:<br>
 - menu.html → cargado en el contenedor &lt;div id="menu"&gt;&lt;/div&gt;<br>
 - slider.html (contenido inicial) → cargado en el contenedor &lt;div id="content"&gt;&lt;/div&gt;<br>
@@ -185,7 +185,7 @@ Al acceder al sitio, se carga el archivo principal index.html, que actúa como p
 ### Navegación
 Cuando el usuario navega por otras secciones del sitio, únicamente se actualiza el contenido del contenedor &lt;div id="content"&gt;&lt;/div&gt;. El menú y el pie de página permanecen sin cambios desde la primera carga, lo que mejora el rendimiento y simula el comportamiento de una SPA.
 
-### Almacenamiento de Datos
+### Almacenamiento de datos
 Los datos de servicios y usuarios se manejan a través de archivos JSON:<br>
 - services.json: contiene información de los servicios disponibles.<br>
 - users.json: contiene las credenciales de los usuarios administradores.<br>
@@ -200,5 +200,5 @@ En el caso de los servicios, cualquier modificación o eliminación actualiza au
 Diseñado y desarrollado por José Alejandro Bedoya Gil.<br>
 Gracias a tecnologías como Bootstrap, CSS, HTML y JavaScript.
 
-## Visitar Sitio Web Professional Services S.A.S.
+## Visitar Sitio web Professional Services S.A.S.
 https://alejandrobedoyagil.github.io/web
